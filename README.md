@@ -11,5 +11,5 @@ The code is written in python using the sklearn library.
 To run the program you will need the following :
 
 - python3 (python 3.7.2 was used)
-- pip requirement listed in requirements.txt file
+- pip requirement listed in the pos_prediction/requirements.txt file
 - graphviz (to produce the outputed graph)
