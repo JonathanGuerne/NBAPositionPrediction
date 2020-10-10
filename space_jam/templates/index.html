@@ -8,13 +8,16 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{url_for('static',filename='main.js')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
 
     <!-- Bootstrap core JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
         integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o"
         crossorigin="anonymous"></script>
+
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 
     <script src="{{url_for('static', filename='main.js')}}"></script>
 </head>
@@ -25,8 +28,8 @@
     <div id="container">
         <h1>Team comparison</h1>
 
-        <p>This website tend to give a key to answer the everlasting question : "how would they look like in this era
-            ?". In other terms,
+        <p>This webapp tend to give a key to answer the everlasting question : "how would they look like in this era
+            ?".<br/>In other terms,
             you are here able to recrate the roster of your favorite team from a specific season based on player from an
             other season</p>
 
@@ -66,13 +69,18 @@
         </table>
 
         <br>
-        <button class="btn-information" onclick="generate_result()">GO</button>
+        <button type="button" class="btn btn-secondary" onclick="generate_result()">GO</button>
 
 
         <h2>3. Results</h2>
 
-        <table id="result">
+        <table id="result" class="table">
         </table>
+    </div>
+
+    <div id="footer">
+        Made by Jonathan Guerne<br>
+        <a href="https://github.com/JonathanGuerne/NBA_MLBD">Source code</a>
     </div>
 
     <script>

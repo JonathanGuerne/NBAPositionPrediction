@@ -69,7 +69,7 @@ class Backend():
 
     def get_alike_team(self, team, old='95-96', new='18-19'):
         # we use pandas to load data directly from csv
-        df = pd.read_csv('adv_stats_{}.csv'.format(old))
+        df = pd.read_csv('../data/adv_stats_{}.csv'.format(old))
 
         # apply a couple of preprocessing function
         df = remove_rk(remove_slash_name(df))
@@ -83,7 +83,7 @@ class Backend():
 
         df_old_team, df_old_names = extract_name_position(df)
 
-        df = pd.read_csv('adv_stats_{}.csv'.format(new))
+        df = pd.read_csv('../data/adv_stats_{}.csv'.format(new))
 
         df = remove_rk(remove_slash_name(df))
         df = remove_age(remove_team(df))
@@ -106,7 +106,7 @@ class Backend():
     def __init__(self):
         
         import glob
-        self.seasons = ([f.split("_")[-1].split('.')[0] for f in glob.glob("*.csv")])
+        self.seasons = ([f.split("_")[-1].split('.')[0] for f in glob.glob("../data/*.csv")])
     
     def does_season_exist(self, season):
         return season in self.seasons
@@ -115,7 +115,7 @@ class Backend():
         return team in self.get_teams_by_season(season)
 
     def get_teams_by_season(self, season):  
-        df = pd.read_csv('adv_stats_{}.csv'.format(season))
+        df = pd.read_csv('../data/adv_stats_{}.csv'.format(season))
         a = np.unique(df['Tm'])
         a = a.tolist()
         if 'TOT' in a :

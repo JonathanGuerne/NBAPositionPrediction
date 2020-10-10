@@ -47,10 +47,10 @@ function generate_result() {
             new_ = Object.values(data.new)
             original_ = Object.values(data.original)
 
-            var rows = "<tr><th>Original</th><th>New</th></tr>"
+            var rows = "<tr><th>Original</th><th id=\"table_right\">New</th></tr>"
 
             for (var i = 0; i < new_.length; i++) {
-                rows += '<tr><td>' + original_[i] + '</td><td>' + new_[i] + '</td></tr>';
+                rows += '<tr><td>' + original_[i] + '</td><td id=\"table_right\">' + new_[i] + '</td></tr>';
             }
 
             $('#result').html(rows);
