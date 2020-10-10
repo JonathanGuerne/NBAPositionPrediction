@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+        integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o"
+        crossorigin="anonymous"></script>
+
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+    <script src="{{url_for('static', filename='main.js')}}"></script>
+</head>
+
+
+<body>
+
+    <div id="container">
+        <h1>Team comparison</h1>
+
+        <p>This webapp tend to give a key to answer the everlasting question : "how would they look like in this era
+            ?".<br/>In other terms,
+            you are here able to recrate the roster of your favorite team from a specific season based on player from an
+            other season</p>
+
+
+        <h2>1. Select the team to recreate</h2>
+
+        <table>
+            <tr>
+                <th>Season</th>
+                <th>Team</th>
+            </tr>
+            <tr>
+                <td>
+                    <select class="form-control" id="original_season" onchange="handle_season_change()">
+                    </select>
+                </td>
+                <td>
+                    <select class="form-control" id="team">
+                    </select>
+                </td>
+            </tr>
+        </table>
+
+
+        <h2>2. Select a season</h2>
+
+        <table>
+            <tr>
+                <th>Season</th>
+            </tr>
+            <tr>
+                <td>
+                    <select class="form-control" id="new_season">
+                    </select>
+                </td>
+            </tr>
+        </table>
+
+        <br>
+        <button type="button" class="btn btn-secondary" onclick="generate_result()">GO</button>
+
+
+        <h2>3. Results</h2>
+
+        <table id="result" class="table">
+        </table>
+    </div>
+
+    <div id="footer">
+        Made by Jonathan Guerne<br>
+        <a href="https://github.com/JonathanGuerne/NBA_MLBD">Source code</a>
+    </div>
+
+    <script>
+
+        var originalHTML = document.getElementById("result").innerHTML
+
+
+        $(function () {
+            var y = document.getElementById("new_season");
+            var t = document.getElementById("original_season");
+
+
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:5000/api/seasons",
+                datatype: "json",
+                success: function (data) {
+                    for (var i = 0; i < data.length; i++) {
+                        var option = document.createElement("option");
+                        option.text = data[i];
+                        t.add(option);
+                    }
+
+                    handle_season_change();
+
+                }
+            });
+
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:5000/api/seasons",
+                datatype: "json",
+                success: function (data) {
+                    for (var i = 0; i < data.length; i++) {
+                        var option = document.createElement("option");
+                        option.text = data[i];
+                        y.add(option);
+                    }
+
+                }
+            });
+
+        })
+
+    </script>
+
+</body>
+
+</html>

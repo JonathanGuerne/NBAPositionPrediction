@@ -51,7 +51,7 @@ node [shape=box] ;
 23 -> 24 ;
 25 [label="entropy = 1.248\nsamples = 16\nvalue = [0, 0, 6, 1, 9]\nclass = SG"] ;
 23 -> 25 ;
-26 [label="DRB% <= 7.95\nentropy = 0.292\nsamples = 48\nvalue = [0, 0, 46, 1, 1]\nclass = PG"] ;
+26 [label="WS/48 <= 0.035\nentropy = 0.292\nsamples = 48\nvalue = [0, 0, 46, 1, 1]\nclass = PG"] ;
 22 -> 26 ;
 27 [label="entropy = 0.735\nsamples = 14\nvalue = [0, 0, 12, 1, 1]\nclass = PG"] ;
 26 -> 27 ;
