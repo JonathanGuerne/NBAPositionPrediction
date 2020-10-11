@@ -3,3 +3,8 @@ numpy
 sklearn
 matplotlib
 graphviz
+requests
+beautifulsoup4
+flask
+flask_restful
+flask_cors

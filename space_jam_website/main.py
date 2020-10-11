@@ -1,5 +1,5 @@
-from flask import Flask, render_template, url_for, request, jsonify
-from flask_restful import reqparse, abort, Api, Resource
+from flask import Flask, render_template, jsonify
+from flask_restful import abort, Api
 from flask_cors import CORS
 from backend import Backend
 app = Flask(__name__)

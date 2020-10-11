@@ -97,9 +97,12 @@ class Backend():
 
         df_current_player, df_current_names = extract_name_position(df)
         neigh = NearestNeighbors(1, metric='sqeuclidean')
-        neigh.fit(df_current_player.values)
 
-        dst, ids = neigh.kneighbors(df_old_team.values)
+        scaler = MinMaxScaler()
+
+        neigh.fit(scaler.fit_transform(df_current_player.values))
+
+        dst, ids = neigh.kneighbors(scaler.transform(df_old_team.values))
         result_df = pd.DataFrame({'original' : (df_old_names.values)[:,0],
         'new' : df_current_names.iloc[np.reshape(ids,-1)].values[:,0]})
         
