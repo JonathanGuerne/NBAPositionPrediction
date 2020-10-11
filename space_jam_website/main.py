@@ -12,11 +12,11 @@ backend = Backend()
 
 def abort_if_season_doesnt_exist(season):
     if not backend.does_season_exist(season):
-        abort(404, message="This season doesn't exist")
+        abort(404, message="This season doesn't exist in our database")
 
 def abort_if_team_doesnt_exist(season, team):
     if not backend.does_team_exist(season, team):
-        abort(404, message="This team doesn't exist in this season")
+        abort(404, message="This team doesn't exist in this season in our database")
 
 
 @app.route('/api/equivalent/<origin_se>/<team>/<new_se>')

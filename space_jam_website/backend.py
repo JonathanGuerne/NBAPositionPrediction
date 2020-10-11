@@ -71,6 +71,8 @@ class Backend():
         # we use pandas to load data directly from csv
         df = pd.read_csv('../data/adv_stats_{}.csv'.format(old))
 
+        print(len(df))
+
         # apply a couple of preprocessing function
         df = remove_rk(remove_slash_name(df))
         df = df.loc[df['Tm'] == team]
